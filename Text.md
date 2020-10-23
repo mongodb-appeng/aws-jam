@@ -35,13 +35,13 @@ You'll need a free Atlas account to create your Data Lake. You'll also need a da
 # Instructions
 Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
 
-**Note that if you have an existing account and project, you can use that rather than creating a new one.***
+**Note that if you have an existing account and project, you can use that rather than creating a new one.**
 
 !["Skip creating an Atlas cluster"](https://aws-jam-challenge-resources.s3.amazonaws.com/mongodb-data-lake/no-cluster.png "Skip creating an Atlas cluster")
 
 You'll also need to create the organization and project.
 
-Set up a database user.
+Set up a database user (stick with the default username/password option).
 
 To complete this task – what `Authentication Method` is being used for your new user?
 
