@@ -5,7 +5,7 @@ It's the first week in your new job, and the VP of sales is already keeping you 
 
 From the start of the year, all current sales data has been stored in MongoDB Atlas – allowing us to run operational and analytical workloads on the live data set. Unfortunately, that wasn't always the case – Excel was the "database" choice for past years! At least someone took the initiative to export that data in CSV format and store it in S3.
 
-The sales team now need to analyze that data.
+The sales team now needs your help to analyze that data.
 
 # Learning Outcome
 ## Summary
@@ -19,14 +19,14 @@ In this challenge, you'll create a new Atlas Data Lake, link it to your S3 bucke
 # Task 1
 # Find Your S3 Bucket
 # Background
-You've been asked to calculate the total number of offices supplies that were sold to our Lithuanian customers through offline sales channels. The raw data is buried within a mass of CSV data stored in an S3 bucket. You need to link a new Atlas Data Lake to that data, and then run an aggregation to find the answer.
+You've been asked to calculate the total number of office supplies that were sold to our Lithuanian customers through offline sales channels. The raw data is buried within a mass of CSV data stored in an S3 bucket. You need to link a new Atlas Data Lake to that data, and then run an aggregation to find the answer.
 
 # Instructions
 Find the name of the single S3 bucket in your AWS account – this is the answer for this task (and you'll need it again later).
 
 ## Clue
 ### How to find my S3 bucket name
-Use the AWS console or CLI to navigate to the account's S3 buckets and take a note of the bucket's name – you need to provide this name as your answer to complete this task.
+Click the button at the top of the page to open the AWS console. Use the AWS console or CLI to navigate to the account's S3 buckets and take a note of the bucket's name – you need to provide this name as your answer to complete this task.
 
 # Task 2
 # Create MongoDB Atlas account and a database user
@@ -39,7 +39,7 @@ Navigate to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a ne
 
 You'll also need to create the organization and project.
 
-Set up a database user (stick with the default `Password`).
+Set up a database user.
 
 To complete this task – what `Authentication Method` is being used for your new user?
 
@@ -82,22 +82,25 @@ To complete this challenge, provide the name you gave to your Data Lake.
 
 ## Clue
 ### Problems setting up IAM Role with right permissions
-It's simplest to create a new IAM Role, and use the AWS CLI (using the link from this challenge) - the Atlas UI guides you through the process
+It's simplest to create a new IAM Role, using the AWS CLI - the Atlas UI guides you through the process. To follow the process you need to have the AWS CLI installed.
+
+If you need to install the CLI please follow [these instructions](https:/zdocs.aws.amazon.com/cli/latest/userguide/install-cliv2.html). Then, click on the AWS CLI button at the top of the page, copy the commands listed there and run them in your terminal. You should now be ready to follow the instructions in the Atlas UI.
+
 
 ## Clue
 ### Duplicate role name?
-If the Atlas UI warns that the role already exists, just add some random characters to the name
+If the Atlas UI warns that the role already exists, change the role name by adding some random characters.
 
 ## Clue
 ### Data Lake still unable to connect to the bucket
-If the Altas UI says that your Data Lake can't access the S3 bucket after you've set up the IAM role, then you just need to wait for a second and try again – the time you spent reading this should have been more than enough!
+If the Altas UI says that your Data Lake can't access the S3 bucket after you've set up the IAM role, then you just need to wait for a second and try again – the time you spent reading this should have been more than enough! What you are seeing are propagation delays.
 
 # Task5
 # Connect to your Data Lake and query your sales data
 # Introduction
 Finally, you can connect to your sales data (via Atlas Data Lake) and run an aggregation query to find the data you need.
 # Instructions
-Connect to the data lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use your S3 bucket name as the database name and use the username and password you created in Atlas earlier
+Connect to the data lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use your S3 bucket name as the database name and use the username and password you created in Atlas earlier to connect.
 
 From the `mongo` shell, run this query:
 ```
@@ -105,22 +108,22 @@ db.SalesData.aggregate(
     [
         {
         '$match': {
-            'Country': 'Lithuania', 
+            'Country': 'Lithuania',
             'Item Type': 'Office Supplies'
         }
         }, {
         '$group': {
             '_id': {
             'channel': '$Sales Channel'
-            }, 
+            },
             'units': {
             '$sum': {$toInt: '$Units Sold'}
             }
         }
         }, {
         '$project': {
-            'channel': '$_id.channel', 
-            '_id': 0, 
+            'channel': '$_id.channel',
+            '_id': 0,
             'units': 1
         }
         }
