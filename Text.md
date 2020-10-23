@@ -133,8 +133,12 @@ db.SalesData.aggregate(
 
 The number of units for the offline channel sales is the answer for this challenge.
 
-## Clue: How do I connect to the right database?
+## Clue
+### How do I connect to the right database?
 In the MongoDB connection string, replace `dbname` with the name of your S3 bucket
+
+### I'm running the aggregation but getting no results.
+If you are running the aggregation and seeing no results you probably didn't use the bucket name as the database name to connect to. In your terminal window run `show dbs` and then `use <dbname>` inserting the output of the `show dbs` command as the `dbname`.
 
 # Next Steps & Actions
 You now have a [MongoDB Atlas](https://cloud.mongodb.com) account - go ahead and create a free (forever) database cluster and experiment.
