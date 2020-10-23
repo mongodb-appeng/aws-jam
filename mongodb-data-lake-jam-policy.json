@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:GetBucket",
+          "s3:ListBucket",
+          "s3:*",
+          "iam:CreateRole",
+          "iam:PutRolePolicy"
+        ],
+        "Resource": "*",
+        "Effect": "Allow"
+      }
+    ]
+  }

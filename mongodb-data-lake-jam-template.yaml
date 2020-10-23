@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: Create an S3 Bucket, populate it with a copy of a sample CSV file
+Outputs:
+  bucketName:
+    Value: !Ref S3Bucket
+    Description: Name of the bucket containing the CSV data
+  dataSet:
+    Value: !GetAtt BootstrapBucket.dataSetNumber
+    Description: Which data set is being used
+  correctAnswer:
+    Value: !GetAtt BootstrapBucket.correctAnswer
+    Description: Correct result from the agregation
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+  deploytos3:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: 's3://aws-jam-challenge-resources/mongodb-data-lake/lambdaDeploy.zip'
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonS3FullAccess
+  BootstrapBucket:
+    Type: Custom::deploytos3
+    Properties:
+      ServiceToken: !GetAtt deploytos3.Arn
+      bucketname: !Ref S3Bucket
