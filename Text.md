@@ -33,7 +33,9 @@ Click the button at the top of the page to open the AWS console. Use the AWS con
 # Background
 You'll need a free Atlas account to create your Data Lake. You'll also need a database user in order to connect to the Data Lake and run a query.
 # Instructions
-Navigate to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a new account; there's no need to create an Atlas Cluster.
+Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
+
+**Note that if you have an existing account and project, you can use that rather than creating a new one.***
 
 !["Skip creating an Atlas cluster"](https://aws-jam-challenge-resources.s3.amazonaws.com/mongodb-data-lake/no-cluster.png "Skip creating an Atlas cluster")
 
