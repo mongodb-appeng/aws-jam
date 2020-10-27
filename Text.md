@@ -13,7 +13,7 @@ Run queries on your legacy data stored in S3.
 
 ## Content
 ##### What you will learn from this challenge:
-You'll learn to configiure and use MongoDB Atlas Data Lake to query and analyze data across AWS S3 in-place and in its native format using the MongoDB Query Language (MQL).
+You'll learn to configure and use MongoDB Atlas Data Lake to query and analyze data across AWS S3 in-place and in its native format using the MongoDB Query Language (MQL).
 
 You'll create a new Atlas Data Lake, link it to your S3 bucket, and query the CSV data stored there.
 
@@ -63,10 +63,10 @@ If you prefer to use the AWS CLI then you can get the bucket name using `aws s3 
 # Task 2
 # Create MongoDB Atlas account and a database user
 ## Background
-You've not yet been given access a company credit card, but the sales department is breathing down your neck to get the data they need. Fortunately, you don't need to provide any payment details to create your MongoDB Atlas account.
+You've not yet been given access to a company credit card, but the sales department is breathing down your neck to get the data they need. Fortunately, you don't need to provide any payment details to create your MongoDB Atlas account.
 
 ## Your Task
-Unless you already have an MongoDB Atlas account, you need to create a free Atlas account for your Data Lake. You also need to create a database user in order to connect to the Data Lake and run a query later.
+Unless you already have a MongoDB Atlas account, you need to create a free Atlas account for your Data Lake. You also need to create a database user in order to connect to the Data Lake and run a query later.
 
 Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
 
@@ -134,7 +134,7 @@ You'll find the option to edit the **Network Access** settings in the **Security
 
 ## Clue
 ### Step-by-step instructions
-- Navigate to the **Network Access** settings in the **Security** section on the left of the Atlas UI 
+- Navigate to the **Network Access** settings in the **Security** section on the left of the Atlas UI
 - Click on **Add IP Address**, then on **ADD CURRENT IP ADDRESS**, and then **Confirm**.
 
 !["Add IP list to approved list"](https://aws-jam-challenge-resources.s3.amazonaws.com/mongodb-data-lake/network-access.png "Add IP list to approved list")
@@ -145,7 +145,7 @@ You'll find the option to edit the **Network Access** settings in the **Security
 # Task 4
 # Create an Atlas Data Lake & connect to S3 bucket
 ## Background
-It's time to create your Atlas Data Lake to your S3 bucket – once you've done that, you can keep the sales team happy by mining the data at any time, using the rich MongoDB Query Language (MQL).
+It's time to create your Atlas Data Lake and connect it to your S3 bucket – once you've done that, you can keep the sales team happy by mining the data at any time, using the rich MongoDB Query Language (MQL).
 
 ## Your Task
 Create an Atlas Data Lake and connect it to your S3 bucket, allowing you to query your CSV (or JSON, Parquet, Avro, ORC...) files in-place.
