@@ -1,4 +1,4 @@
-# "Excel is not a database!" – Challeng for AWS JAM
+# "Excel is not a database!" – Challenge for AWS JAM
 
 This repo contains the code, text and resources for an [AWS Jam](https://jam.awsevents.com/) challenge.
 
