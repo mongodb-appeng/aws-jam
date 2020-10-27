@@ -154,6 +154,10 @@ From the Atlas UI, follow the instructions to create your data lake – setting 
 
 !["Create a MongoDB Atlas Data Lake"](https://aws-jam-challenge-resources.s3.amazonaws.com/mongodb-data-lake/data-lake.png "Create a MongoDB Atlas Data Lake")
 
+If the Altas UI says that your Data Lake can't access the S3 bucket after you've set up the IAM role, then you just need to wait for a second and try again – the time you spent reading this should have been more than enough! What you are seeing are propagation delays.
+
+If the Atlas UI warns that the role already exists, change the role name by adding some random characters.
+
 Don't try connecting to your Data Lake yet – that's your next task!
 
 ### Inventory
@@ -174,14 +178,6 @@ To complete this challenge, submit the name you gave to your Data Lake.
 It's simplest to create a new IAM Role, using the AWS CLI - the Atlas UI guides you through the process. To follow the process you need to have the AWS CLI installed.
 
 If you need to install the CLI please follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">these instructions</a>. Then, click on the AWS CLI button at the top of the page, copy the commands listed there and run them in your terminal. You should now be ready to follow the instructions in the Atlas UI.
-
-## Clue
-### Duplicate role name?
-If the Atlas UI warns that the role already exists, change the role name by adding some random characters.
-
-## Clue
-### Data Lake still unable to connect to the bucket
-If the Altas UI says that your Data Lake can't access the S3 bucket after you've set up the IAM role, then you just need to wait for a second and try again – the time you spent reading this should have been more than enough! What you are seeing are propagation delays.
 
 ## Clue
 ### Step-by-step instructions

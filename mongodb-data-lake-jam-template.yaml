@@ -20,7 +20,9 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs12.x
-      CodeUri: 's3://aws-jam-challenge-resources/mongodb-data-lake/lambdaDeploy.zip'
+      CodeUri:
+        Bucket: !Sub 'aws-jam-challenge-resources-${AWS::Region}'
+        Key: 'mongodb-data-lake/lambdaDeploy.zip'
       Policies:
         - AWSLambdaBasicExecutionRole
         - AmazonS3FullAccess
