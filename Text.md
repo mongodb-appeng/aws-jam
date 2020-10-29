@@ -325,7 +325,7 @@ Some useful resources:
 - Free online training from <a href="https://university.mongodb.com/" target="_blank">MongoDB University</a>
 
 ## Cleaning up
-Depending on what you already had on your local machine, you have have need to install some new tools. If you no longer need them then this is how to remove them.
+Depending on what you already had on your local machine, you may have needed to install some new tools. If you no longer need them then this is how to remove them.
 
 ### Removing the `mongo` shell
 #### macOS
