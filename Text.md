@@ -66,6 +66,11 @@ If you prefer to use the AWS CLI then you can get the bucket name using `aws s3 
 You've not yet been given access to a company credit card, but the sales department is breathing down your neck to get the data they need. Fortunately, you don't need to provide any payment details to create your MongoDB Atlas account.
 
 ## Your Task
+
+Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas" rel="nofollow">MongoDB Atlas</a>.
+
+### Getting Started
+
 Unless you already have a MongoDB Atlas account, you need to create a free Atlas account for your Data Lake. You also need to create a database user in order to connect to the Data Lake and run a query later.
 
 Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
@@ -76,7 +81,8 @@ Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoD
 
 You'll also need to create the organization and project.
 
-Set up a database user (stick with the default username/password option).
+Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas" rel="nofollow">MongoDB Atlas</a>.
+
 
 ### Inventory
 After completing this task, you'll have:
@@ -181,21 +187,28 @@ If you need to install the CLI please follow <a href="https://docs.aws.amazon.co
 
 ## Clue
 ### Step-by-step instructions
-- From the Atlas UI, select **Data Lake** from the left-hand menu
-- Click the button to configure a new Data Lake
-- Give your Data Lake a name and continue
-- Stick with the option to authorize an AWS IAM role and continue
-- Pick the option to create a **new role**
-- At this point, you need to use the AWS CLI from your terminal – if you don't already have it installed, then please follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">these instructions</a>. Click the AWS CLI button in the challenge window and copy the commands. Paste those commands into a terminal window so that the AWS CLI will connect to your challenge environment.
-- Create a file named `role-trust-policy.json` and paste in the JSON document that you see in the Atlas UI
-- Copy the `aws iam create-role...` command shown in the Atlas UI and paste it into your terminal
-- The details of the new IAM role will be displayed in your terminal. Copy the `Arn` value - it's a string starting with `arn:` and ending with the name you gave to the role.
-- Paste the ARN value into the Atlas UI and continue
-- Add the name of your S3 bucket (you found it in the first challenge - go back to the AWS console if you didn't make a note of it) into the **Read-only** field and continue
-- In the next section, you'll see another JSON document that you need to paste into a new local file named `adl-s3-policy.json`
-- Copy the `aws iam put-role-policy...` command from UI and run it in your terminal
-- Click the button to finish the setup. If it fails, wait for a second and try again (it can take a couple of seconds for things to synchronize)
-- Complete the task by submitting the name you gave to your Data Lake into the challenge window
+#### Start creating your data lake
+1. From the Atlas UI, select **Data Lake** from the left-hand menu
+1. Click the button to configure a new Data Lake
+1. Give your Data Lake a name and continue
+
+#### Set up and authorize a new IAM role
+1. Stick with the option to authorize an AWS IAM role and continue
+1. Pick the option to create a **new role**
+1. At this point, you need to use the AWS CLI from your terminal – if you don't already have it installed, then please follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">these instructions</a>. Click the AWS CLI button in the challenge window and copy the commands. Paste those commands into a terminal window so that the AWS CLI will connect to your challenge environment.
+1. Create a file named `role-trust-policy.json` and paste in the JSON document that you see in the Atlas UI
+1. Copy the `aws iam create-role...` command shown in the Atlas UI and paste it into your terminal
+1. The details of the new IAM role will be displayed in your terminal. Copy the `Arn` value - it's a string starting with `arn:` and ending with the name you gave to the role.
+1. Paste the ARN value into the Atlas UI and continue
+
+#### Link to your S3 bucket & add IAM policy
+1. Add the name of your S3 bucket (you found it in the first challenge - go back to the AWS console if you didn't make a note of it) into the **Read-only** field and continue
+1. In the next section, you'll see another JSON document that you need to paste into a new local file named `adl-s3-policy.json`
+1. Copy the `aws iam put-role-policy...` command from UI and run it in your terminal
+
+#### Complete the task and submit challenge answer
+1. Click the button to finish the setup. If it fails, wait for a second and try again (it can take a couple of seconds for things to synchronize)
+1. Complete the task by submitting the name you gave to your Data Lake into the challenge window
 
 # Task 5
 # Connect to your Data Lake and query your sales data
@@ -203,7 +216,7 @@ If you need to install the CLI please follow <a href="https://docs.aws.amazon.co
 Finally, you can connect to your sales data (via Atlas Data Lake) and run an aggregation query to find the data you need - and get sales off your back!
 
 ## Your Task
-Connect to your Data Lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use your S3 bucket name as the database name and use the username and password you created in Atlas earlier to connect.
+Connect to your Data Lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use your **S3 bucket** name as the database name and use the username and password you created in Atlas earlier to connect.
 
 From the `mongo` shell, run this query:
 ```
@@ -310,3 +323,32 @@ You now have a <a href="https://cloud.mongodb.com" target="_blank">MongoDB Atlas
 Some useful resources:
 - <a href="https://docs.mongodb.com/datalake/" target="_blank">MongoDB Atlas Data Lake documentation</a>
 - Free online training from <a href="https://university.mongodb.com/" target="_blank">MongoDB University</a>
+
+## Cleaning up
+Depending on what you already had on your local machine, you have have need to install some new tools. If you no longer need them then this is how to remove them.
+
+### Removing the `mongo` shell
+#### macOS
+`brew uninstall mongodb-community-shell`
+
+#### Windows
+Remove the MongoDB files you downloaded.
+
+#### Linux
+Remove the MongoDB files you downloaded.
+
+### Removing the `aws` cli
+#### macOS
+Follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html#cliv2-mac-remove" target="_blank">these instructions</a>
+
+#### Windows
+Follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html#cliv2-windows-remove" target="_blank">these instructions</a>
+
+#### Linux
+Follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-remove" target="_blank">these instructions</a>
+
+# Wiki
+This [video](https://drive.google.com/file/d/1NT_-YoPSlVQgUvB2AalFK9xugfQGAFQU/view?usp=sharing)(no sound) demonstrates someone completing the challenge.
+
+Secondary support will be provided by:
+- andrew.morgan@mongodb.com (GMT)
