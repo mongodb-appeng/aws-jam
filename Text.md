@@ -67,13 +67,13 @@ You've not yet been given access to a company credit card, but the sales departm
 
 ## Your Task
 
-Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas" rel="nofollow">MongoDB Atlas</a>.
+Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" rel="nofollow">MongoDB Atlas</a>.
 
 ### Getting Started
 
 Unless you already have a MongoDB Atlas account, you need to create a free Atlas account for your Data Lake. You also need to create a database user in order to connect to the Data Lake and run a query later.
 
-Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
+Navigate to <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB Atlas</a> and create a new account; there's no need to create an Atlas Cluster.
 
 **Note that if you have an existing account and project, you can use that rather than creating a new one.**
 
@@ -81,7 +81,7 @@ Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoD
 
 You'll also need to create the organization and project.
 
-Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas" rel="nofollow">MongoDB Atlas</a>.
+Set up a database user (stick with the default username/password option) using <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" rel="nofollow">MongoDB Atlas</a>.
 
 
 ### Inventory
@@ -103,7 +103,7 @@ Navigate to the `Database Access` section of the Atlas UI, click on `ADD NEW DAT
 
 ## Clue
 ### Step-by-step instructions
-- Navigate to <a href="https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a>
+- Navigate to <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB Atlas</a>
 - Click on the button to start the process of creating a new account
 - Provide your name, email address, etc. (or use the option to sign up using your Google account)
 - On the next screen, you have the option to change the Atlas organization and project names before continuing (you can also indicate your prefered programming language - it doesn't affect this challenge)
@@ -318,14 +318,14 @@ db.SalesData.aggregate(
 - Submit the value of `XXXX` into the challenge window to complete this task and the challenge
 
 # Next Steps & Actions
-You now have a <a href="https://cloud.mongodb.com" target="_blank">MongoDB Atlas</a> account - go ahead and create a free (forever) database cluster and experiment.
+You now have a <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB Atlas</a> account - go ahead and create a free (forever) database cluster and experiment.
 
 Some useful resources:
 - <a href="https://docs.mongodb.com/datalake/" target="_blank">MongoDB Atlas Data Lake documentation</a>
 - Free online training from <a href="https://university.mongodb.com/" target="_blank">MongoDB University</a>
 
 ## Cleaning up
-Depending on what you already had on your local machine, you have have need to install some new tools. If you no longer need them then this is how to remove them.
+Depending on what you already had on your local machine, you may have needed to install some new tools. If you no longer need them then this is how to remove them.
 
 ### Removing the `mongo` shell
 #### macOS
