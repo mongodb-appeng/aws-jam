@@ -1,0 +1,97 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Outputs": {
+    "correctAnswer": {
+      "Description": "Correct result from the agregation",
+      "Value": {
+        "Fn::GetAtt": "BootstrapBucket.correctAnswer"
+      }
+    },
+    "bucketName": {
+      "Description": "Name of the bucket containing the CSV data",
+      "Value": {
+        "Ref": "S3Bucket"
+      }
+    },
+    "dataSet": {
+      "Description": "Which data set is being used",
+      "Value": {
+        "Fn::GetAtt": "BootstrapBucket.dataSetNumber"
+      }
+    }
+  },
+  "Description": "Create an S3 Bucket, populate it with a copy of a sample CSV file",
+  "Resources": {
+    "S3Bucket": {
+      "DeletionPolicy": "Retain",
+      "Type": "AWS::S3::Bucket"
+    },
+    "deploytos3Role": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Action": [
+                "sts:AssumeRole"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              }
+            }
+          ]
+        },
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+        ],
+        "Tags": [
+          {
+            "Value": "SAM",
+            "Key": "lambda:createdBy"
+          }
+        ]
+      }
+    },
+    "deploytos3": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Handler": "index.handler",
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "aws-jam-challenge-resources-${AWS::Region}"
+          },
+          "S3Key": "mongodb-data-lake/lambdaDeploy.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "deploytos3Role",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs12.x",
+        "Tags": [
+          {
+            "Value": "SAM",
+            "Key": "lambda:createdBy"
+          }
+        ]
+      }
+    },
+    "BootstrapBucket": {
+      "Type": "Custom::deploytos3",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": "deploytos3.Arn"
+        },
+        "bucketname": {
+          "Ref": "S3Bucket"
+        }
+      }
+    }
+  }
+}
