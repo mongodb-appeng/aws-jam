@@ -7,3 +7,7 @@ This <a href="https://aws-jam-challenge-resources.s3.amazonaws.com/mongodb-data-
 
 Secondary support will be provided by:
 - andrew.morgan@mongodb.com (GMT)
+
+Data to capture:
+ - AWS region where the challenge is running
+ - `dataSet` value from the CFN output
