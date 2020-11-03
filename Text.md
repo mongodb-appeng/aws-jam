@@ -321,8 +321,8 @@ db.SalesData.aggregate(
 You now have a <a href="https://www.mongodb.com/cloud/atlas?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB Atlas</a> account - go ahead and create a free (forever) database cluster and experiment.
 
 Some useful resources:
-- <a href="https://docs.mongodb.com/datalake/" target="_blank">MongoDB Atlas Data Lake documentation</a>
-- Free online training from <a href="https://university.mongodb.com/" target="_blank">MongoDB University</a>
+- <a href="https://docs.mongodb.com/datalake/?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB Atlas Data Lake documentation</a>
+- Free online training from <a href="https://university.mongodb.com/?utm_campaign=pm_se_dm_dec&utm_source=aws&utm_medium=reinvent&utm_term=jam&utm_content=" target="_blank">MongoDB University</a>
 
 ## Cleaning up
 Depending on what you already had on your local machine, you may have needed to install some new tools. If you no longer need them then this is how to remove them.
