@@ -112,7 +112,6 @@ Navigate to the `Database Access` section of the Atlas UI, click on `ADD NEW DAT
 - Stick with the default authentication method of **Password**, and provide your username and password - you can stick with the default options. Click the button to create the user.
 - The next page shows all of the database users, there should be just one entry – the user you just created. Please take a note of the **Authentication** method for this user, and submit it to complete this task.
 
-
 ## Answer
 SCRAM
 
@@ -190,25 +189,42 @@ If you need to install the CLI please follow <a href="https://docs.aws.amazon.co
 #### Start creating your data lake
 1. From the Atlas UI, select **Data Lake** from the left-hand menu
 1. Click the button to configure a new Data Lake
-1. Give your Data Lake a name and continue
+1. Click on the "Connect Data" button
+1. Leave the "Amazon S3" tile selected and click "Next"
 
-#### Set up and authorize a new IAM role
-1. Stick with the option to authorize an AWS IAM role and continue
+### Create and Link IAM role
+
+1. Leave "Authorize an AWS IAM Role" selected and click "Next"
 1. Pick the option to create a **new role**
-1. At this point, you need to use the AWS CLI from your terminal – if you don't already have it installed, then please follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">these instructions</a>. Click the AWS CLI button in the challenge window and copy the commands. Paste those commands into a terminal window so that the AWS CLI will connect to your challenge environment.
+1. At this point, you need to use the AWS CLI from your terminal – if you don't already have it installed, then please follow <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html" target="_blank">these instructions</a>. Click the ">_ CLI Access" button in the challenge window and copy the commands. Paste those commands into a terminal window so that the AWS CLI will connect to your challenge environment
 1. Create a file named `role-trust-policy.json` and paste in the JSON document that you see in the Atlas UI
 1. Copy the `aws iam create-role...` command shown in the Atlas UI and paste it into your terminal
 1. The details of the new IAM role will be displayed in your terminal. Copy the `Arn` value - it's a string starting with `arn:` and ending with the name you gave to the role.
 1. Paste the ARN value into the Atlas UI and continue
+1. Click "Next"
 
-#### Link to your S3 bucket & add IAM policy
-1. Add the name of your S3 bucket (you found it in the first challenge - go back to the AWS console if you didn't make a note of it) into the **Read-only** field and continue
+#### Link to your S3 bucket
+1. Add the name of your S3 bucket (you found it in the first challenge - go back to the AWS console if you didn't make a note of it)
+1. Leave "Read-only" selected  and the "Prefix" field empty. Click "Next"
 1. In the next section, you'll see another JSON document that you need to paste into a new local file named `adl-s3-policy.json`
 1. Copy the `aws iam put-role-policy...` command from UI and run it in your terminal
 
+#### Add access to your IAM role
+1. Create a file named `adl-s3-policy.json` and paste in the JSON document from the Atlas UI
+1. Copy the `aws iam put-role-policy...` from the Atlas UI and run it from a terminal
+
+#### Setup data source
+1. In the AWS console, click on the `SalesData.csv` S3 file, and then click "Copy S3 URI"
+1. Past the URI into the "Example S3 Path" field
+1. Select `static` for the `SalesData` file, then click "Next"
+
+#### Data Lake configuration
+1. From the Atlas UI, drag the `SalesData.csv` file from the left box to the right one
+1. Rename the database to `S3`, and the collection to `SalesData`
+
 #### Complete the task and submit challenge answer
-1. Click the button to finish the setup. If it fails, wait for a second and try again (it can take a couple of seconds for things to synchronize)
 1. Complete the task by submitting the name you gave to your Data Lake into the challenge window
+1. Click "Save"
 
 # Task 5
 # Connect to your Data Lake and query your sales data
@@ -216,7 +232,7 @@ If you need to install the CLI please follow <a href="https://docs.aws.amazon.co
 Finally, you can connect to your sales data (via Atlas Data Lake) and run an aggregation query to find the data you need - and get sales off your back!
 
 ## Your Task
-Connect to your Data Lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use your **S3 bucket** name as the database name and use the username and password you created in Atlas earlier to connect.
+Connect to your Data Lake using the `mongo` shell (following the instructions in the UI to install it if you don't already have it). Use `S3` as the database name, and `SalesData` as the collection name. Use the username and password you created in Atlas earlier to connect to your Data Lake.
 
 From the `mongo` shell, run this query:
 ```
@@ -263,11 +279,11 @@ To complete this challenge, submit the number of units for the offline channel s
 
 ## Clue
 ### How do I connect to the right database?
-In the MongoDB connection string, replace `dbname` with the name of your S3 bucket
+In the MongoDB connection string, replace `myFirstDatabase` with `S3`
 
 ## Clue
 ### I'm running the aggregation but getting no results
-If you are running the aggregation and seeing no results you probably didn't use the bucket name as the database name to connect to. In your terminal window run `show dbs` and then `use <dbname>` inserting the output of the `show dbs` command as the `dbname`.
+If you are running the aggregation and seeing no results you probably didn't use `S3` as the database name when connecting to Atlas. In your terminal window run `show dbs` and then `use <dbname>` inserting the output of the `show dbs` command as the `dbname` (it should be `S3` if you've followed the instructions.)
 
 ## Clue
 ### Step-by-step instructions
@@ -276,7 +292,7 @@ If you are running the aggregation and seeing no results you probably didn't use
 - Select whether or not you already have the `mongo` shell installed
 - Follow the instructions to install the `mongo` shell if you don't already have it on your machine
 - Copy the `mongo "mongodb://...` command and edit it:
-    - Replace `dbname` (including the angle brackets) with the name of your S3 bucket
+    - Replace `myFirstDatabase` (including the angle brackets) with `S3`
 - Run the edited command in your terminal
     - If it fails to connect then check that the password is the same one as you used when creating the database user in the second task
     - If it still fails to connect, go back to the **network access** settings and confirm that your IP address is listed. To troubleshoot, you can temporarily **allow access from anywhere**
